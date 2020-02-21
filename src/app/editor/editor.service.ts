@@ -14,7 +14,29 @@ export class EditorService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.url + 'users.json').pipe(
-      tap(data => console.log(JSON.stringify(data)))
+      // tap(data => console.log(JSON.stringify(data)))
     );
+  }
+
+  getHierarchy(users: User[]): User[] {    
+    let usersByKey = {}
+    users.forEach(function(user) {
+      usersByKey[user.id] = user;
+    });
+    
+    let hierarchy = [];
+    Object.keys(usersByKey).forEach((id) => {
+        let user = usersByKey[id]
+        if (!user.managerId || user.managerId === null) {
+          hierarchy.push(user)
+        } else if (user.managerId in usersByKey) {
+            let p = usersByKey[user.managerId]
+            if (!('teamMembers' in p)) {
+                p.teamMembers = [];
+            }
+            p.teamMembers.push(user);
+        }
+    });
+    return hierarchy;
   }
 }

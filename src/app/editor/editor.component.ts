@@ -8,8 +8,9 @@ import { User } from './models/user';
   styleUrls: ['./editor.component.scss']
 })
 export class EditorComponent implements OnInit {
-  private users: User[];
   private editorService;
+  public users: User[];
+  public hierarchy: User[];
 
   constructor(editorService: EditorService) {
     this.editorService = editorService;
@@ -17,7 +18,10 @@ export class EditorComponent implements OnInit {
 
   ngOnInit(): void {
     this.editorService.getUsers().subscribe({
-      next: users => this.users = users
+      next: users => {
+        this.users = users.filter(user => user);
+        this.hierarchy = this.editorService.getHierarchy(this.users);
+      }
     })
   }
 

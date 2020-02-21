@@ -1,5 +1,11 @@
 <div class="main-container">
-    <div class="tree sub-container">{{ users | json}}</div>
+    <div class="tree sub-container">
+        <ul>
+            <li *ngFor="let manager of hierarchy">
+              {{ manager.firstName }}
+            </li>
+        </ul>
+    </div>
     <div class="user-details sub-container"></div>
 </div>
 <a routerLink="/login" routerLinkActive="active">login</a>

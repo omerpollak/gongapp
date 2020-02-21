@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { EditorComponent } from './editor/editor.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TreeItemComponent } from './editor/tree-item/tree-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    EditorComponent
+    EditorComponent,
+    TreeItemComponent
   ],
   imports: [
     BrowserModule,
