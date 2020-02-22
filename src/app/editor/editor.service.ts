@@ -8,13 +8,12 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EditorService {
-  private url = 'https://gongfetest.firebaseio.com/';
   private subject = new Subject<any>();
 
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.url + 'users.json').pipe(
+    return this.http.get<User[]>('https://gongfetest.firebaseio.com/users.json').pipe(
       // tap(data => console.log(JSON.stringify(data)))
     );
   }
