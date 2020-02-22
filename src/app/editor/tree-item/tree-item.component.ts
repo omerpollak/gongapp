@@ -19,7 +19,8 @@ export class TreeItemComponent implements OnInit {
   }
 
   onUserClicked($event, clickedUser): void {
-    this.editorService.setChosenUser = clickedUser;
+    console.log('111')
+    this.editorService.sendChosenUser(clickedUser);
   }
 
 }

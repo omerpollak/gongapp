@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './models/user';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +9,8 @@ import { tap } from 'rxjs/operators';
 })
 export class EditorService {
   private url = 'https://gongfetest.firebaseio.com/';
-  
+  private subject = new Subject<any>();
+
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
@@ -40,14 +41,13 @@ export class EditorService {
     return hierarchy;
   }
 
-  private chosenUser: User;
+  sendChosenUser(chosenUser: User) {
+    console.log('222')
+    this.subject.next(chosenUser);
+  }  
+ 
+  getChosenUser(): Observable<User> {
+    return this.subject.asObservable();
+  }
 
-  public getChosenUser(): User {
-    return this.chosenUser;
-  } 
-
-  public setChosenUser(user: User) {
-    console.dir(user);
-    this.chosenUser = user;
-  } 
 }

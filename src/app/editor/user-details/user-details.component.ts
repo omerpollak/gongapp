@@ -1,16 +1,32 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { User } from '../models/user';
+import { EditorService } from '../editor.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss']
 })
-export class UserDetailsComponent implements OnInit {
-  @Input() chosenUser: User;
-  constructor() { }
+export class UserDetailsComponent implements OnInit, OnDestroy {
+  public chosenUser: User;
+  private editorService;
+  private subscription: Subscription;
 
-  ngOnInit(): void {
+  
+  constructor(editorService: EditorService) {    
+    this.editorService = editorService;
   }
 
+  ngOnInit(): void {
+    this.subscription = this.editorService.getChosenUser().subscribe((chosenUser: User) => {
+      console.dir(chosenUser);
+      console.log('chosenUser');
+      this.chosenUser = chosenUser;
+    });
+  }
+ 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }
