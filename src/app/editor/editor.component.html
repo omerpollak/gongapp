@@ -2,11 +2,13 @@
     <div class="tree sub-container">
         <ul>
             <li *ngFor="let manager of hierarchy">
-              {{ manager.firstName }}
+                <app-tree-item [user]='manager'></app-tree-item>
             </li>
         </ul>
     </div>
-    <div class="user-details sub-container"></div>
+    <div class="user-details sub-container">
+        <app-user-details [chosenUser]='chosenUser'></app-user-details> 
+    </div>
 </div>
 <a routerLink="/login" routerLinkActive="active">login</a>
 

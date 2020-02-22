@@ -39,4 +39,15 @@ export class EditorService {
     });
     return hierarchy;
   }
+
+  private chosenUser: User;
+
+  public getChosenUser(): User {
+    return this.chosenUser;
+  } 
+
+  public setChosenUser(user: User) {
+    console.dir(user);
+    this.chosenUser = user;
+  } 
 }

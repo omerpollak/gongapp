@@ -7,13 +7,15 @@ import { LoginComponent } from './login/login.component';
 import { EditorComponent } from './editor/editor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TreeItemComponent } from './editor/tree-item/tree-item.component';
+import { UserDetailsComponent } from './editor/user-details/user-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     EditorComponent,
-    TreeItemComponent
+    TreeItemComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

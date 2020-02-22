@@ -1,1 +1,11 @@
-<p>tree-item works!</p>
+<div>
+    <p (click)='onUserClicked($event, user)'>{{ user.firstName }} {{ user.lastName }}</p>
+    <ul>
+        <li *ngFor="let teamMember of user.teamMembers">
+            <app-tree-item [user]='teamMember'></app-tree-item>
+        </li>
+    </ul>
+</div>
+
+
+

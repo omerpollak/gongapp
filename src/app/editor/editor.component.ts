@@ -11,6 +11,7 @@ export class EditorComponent implements OnInit {
   private editorService;
   public users: User[];
   public hierarchy: User[];
+  public chosenUser: User;
 
   constructor(editorService: EditorService) {
     this.editorService = editorService;
@@ -21,6 +22,7 @@ export class EditorComponent implements OnInit {
       next: users => {
         this.users = users.filter(user => user);
         this.hierarchy = this.editorService.getHierarchy(this.users);
+        this.editorService.setChosenUser = this.hierarchy[0];
       }
     })
   }

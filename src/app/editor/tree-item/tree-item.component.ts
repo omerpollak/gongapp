@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../models/user';
+import { EditorService } from '../editor.service';
 
 @Component({
   selector: 'app-tree-item',
@@ -7,12 +8,18 @@ import { User } from '../models/user';
   styleUrls: ['./tree-item.component.scss']
 })
 export class TreeItemComponent implements OnInit {
-  user: User;
+  @Input() user: User;
 
-  constructor() { }
+  constructor(private editorService: EditorService) {
+
+   }
 
   ngOnInit(): void {
 
+  }
+
+  onUserClicked($event, clickedUser): void {
+    this.editorService.setChosenUser = clickedUser;
   }
 
 }
