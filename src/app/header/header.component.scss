@@ -1,0 +1,12 @@
+.header {
+    height: 30px;
+    background-color: tomato;
+    color: white;
+
+    display: flex;
+    justify-content: space-between;
+
+    .right-side {
+        display: flex;
+    }
+}

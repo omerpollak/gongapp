@@ -42,7 +42,6 @@ export class EditorService {
   }
 
   sendChosenUser(chosenUser: User) {
-    console.log('222')
     this.subject.next(chosenUser);
   }  
  

@@ -8,6 +8,7 @@ import { EditorComponent } from './editor/editor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TreeItemComponent } from './editor/tree-item/tree-item.component';
 import { UserDetailsComponent } from './editor/user-details/user-details.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { UserDetailsComponent } from './editor/user-details/user-details.compone
     LoginComponent,
     EditorComponent,
     TreeItemComponent,
-    UserDetailsComponent
+    UserDetailsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

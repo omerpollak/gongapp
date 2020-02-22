@@ -20,8 +20,6 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription = this.editorService.getChosenUser().subscribe((chosenUser: User) => {
-      console.dir(chosenUser);
-      console.log('chosenUser');
       this.chosenUser = chosenUser;
     });
   }
