@@ -39,7 +39,12 @@ export class EditorComponent implements OnInit {
 
   getLoggedUserFullName(): string {
     let loggedUser = this.users.filter(user => user.id === this.userId)[0];
-    return `${loggedUser.firstName} ${loggedUser.lastName}`;
+    if (loggedUser) {
+      return `${loggedUser.firstName} ${loggedUser.lastName}`;
+    } else {
+      alert('no user logged in');
+      return `no user logged in`;
+    }
   }
 
   onLogOutClicked(): void {

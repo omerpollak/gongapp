@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
         next: userId => {
           if (userId) {
             this.router.navigate(['/editor']);
-            localStorage.setItem('loggedUser', JSON.stringify({userId: userId, loggedDate: Date.now}))
+            localStorage.setItem('loggedUser', JSON.stringify({userId: userId, loggedDate: Date.now()}));
           } else {
             alert('Wrong email address or password.\nPlease try again.')
           }

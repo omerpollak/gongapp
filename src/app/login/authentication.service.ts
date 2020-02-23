@@ -31,8 +31,27 @@ export class AuthenticationService {
       return this.http.get<any>(url)   
     }
 
-    logout() {
+    logout(): void {
         localStorage.removeItem('loggedUser');
+    }
+
+    isAuthenticated(): boolean {
+      let loggedUserFromStorage = localStorage.getItem('loggedUser');
+      if (loggedUserFromStorage) {
+        let loggedDate = JSON.parse(localStorage.getItem('loggedUser'))['loggedDate'];
+        if (!this.isLoggedDateExpired(loggedDate)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    isLoggedDateExpired(loggedDate: number): boolean {
+      const EXPERATION_DURATION_IN_MINUTES = 3;
+      const ONE_MINUTE = 60 * 1000;
+      const now = new Date();
+      const isExpired = loggedDate < (now.getTime() - ONE_MINUTE * EXPERATION_DURATION_IN_MINUTES);
+      return isExpired;
     }
 
     
