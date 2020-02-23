@@ -21,24 +21,9 @@ export class AuthenticationService {
     30, 9, 28, 192, 239, 255, 92, 108, 226, 242, 67, 0, 201, 158, 39, 128, 97, 215, 65, 221, 197, 22, 231];
   
     private secrets: any;
-    // private currentUserSubject: BehaviorSubject<User>;
-    // public currentUser: Observable<User>;
       
 
-    constructor(private http: HttpClient) {
-      // this.getSecrets().subscribe({
-      //   next: secrets => {
-      //     debugger;
-      //     this.secrets = secrets;
-      //   }
-      // })
-        // this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
-        // this.currentUser = this.currentUserSubject.asObservable();
-    }
-
-    // public get currentUserValue(): User {
-    //     //return this.currentUserSubject.value;
-    // }
+    constructor(private http: HttpClient) {}
 
     getUserId(email: string, password: string): Observable<number> {
       let secret = this.encode(email, password);
@@ -47,10 +32,7 @@ export class AuthenticationService {
     }
 
     logout() {
-        // remove user from local storage to log user out
         localStorage.removeItem('loggedUser');
-        alert('auth logged out')
-        // this.currentUserSubject.next(null);
     }
 
     

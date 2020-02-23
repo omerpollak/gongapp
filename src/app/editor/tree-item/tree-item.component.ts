@@ -10,13 +10,9 @@ import { EditorService } from '../editor.service';
 export class TreeItemComponent implements OnInit {
   @Input() user: User;
 
-  constructor(private editorService: EditorService) {
+  constructor(private editorService: EditorService) {}
 
-   }
-
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onUserClicked($event, clickedUser): void {
     this.editorService.sendChosenUser(clickedUser);

@@ -8,16 +8,12 @@ import { User } from '../editor/models/user';
 
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
-    // loginForm: FormGroup;
-    // loading = false;
     submitted = false;
-    // returnUrl: string;
     loginUser: User;
     submitForm;
 
     constructor(
         private formBuilder: FormBuilder,
-        // private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
     ) {
