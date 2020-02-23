@@ -8,7 +8,6 @@ import { EditorComponent } from './editor/editor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TreeItemComponent } from './editor/tree-item/tree-item.component';
 import { UserDetailsComponent } from './editor/user-details/user-details.component';
-import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
@@ -17,8 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     EditorComponent,
     TreeItemComponent,
-    UserDetailsComponent,
-    HeaderComponent
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

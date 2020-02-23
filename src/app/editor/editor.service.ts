@@ -34,11 +34,15 @@ export class EditorService {
             if (!('teamMembers' in p)) {
                 p.teamMembers = [];
             }
-            p.teamMembers.push(user);
+            p.teamMembers.push(user)
+            p.teamMembers = p.teamMembers.sort(this.alphabeticalSort);
         }
     });
+    hierarchy = hierarchy.sort(this.alphabeticalSort);
     return hierarchy;
   }
+
+  alphabeticalSort = (u1, u2) => u1.firstName > u2.firstName ? 1 : -1;
 
   sendChosenUser(chosenUser: User) {
     this.subject.next(chosenUser);

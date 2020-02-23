@@ -47,10 +47,13 @@ export class LoginComponent implements OnInit {
 
     onSubmit(formValue: any) {
       this.submitted = true;
-      let userId = this.authenticationService.login(formValue.email, formValue.password).subscribe({
+      this.authenticationService.getUserId(formValue.email, formValue.password).subscribe({
         next: userId => {
           if (userId) {
             this.router.navigate(['/editor']);
+            localStorage.setItem('loggedUser', JSON.stringify({userId: userId, loggedDate: Date.now}))
+          } else {
+            alert('Wrong email address or password.\nPlease try again.')
           }
         }
       });

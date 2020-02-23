@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../editor/models/user';
 
@@ -40,15 +40,16 @@ export class AuthenticationService {
     //     //return this.currentUserSubject.value;
     // }
 
-    login(email: string, password: string): Observable<number> {
+    getUserId(email: string, password: string): Observable<number> {
       let secret = this.encode(email, password);
       let url = `https://gongfetest.firebaseio.com/secrets/${secret}.json`;
-      return this.http.get<any>(url);      
+      return this.http.get<any>(url)   
     }
 
     logout() {
         // remove user from local storage to log user out
-        // localStorage.removeItem('currentUser');
+        localStorage.removeItem('loggedUser');
+        alert('auth logged out')
         // this.currentUserSubject.next(null);
     }
 
@@ -84,7 +85,6 @@ export class AuthenticationService {
         .slice(-2)
         .toUpperCase();
 
-      console.log(`email is ${email} password is ${password} - code is ${code}`);   
       return code;
     }
 }
